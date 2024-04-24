@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      room:
+        name: Name of your room
+    labels:
+      room:
+        name: Name
+
+  helpers:
+    submit:
+      room:
+        create: Create room
+        update: Update room

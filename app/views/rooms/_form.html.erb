@@ -1,0 +1,10 @@
+<%= simple_form_for room, html: { class: "room form" } do |f| %>
+  <% if room.errors.any? %>
+    <div class="error-message">
+      <%= room.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :name, input_html: { autofocus: true } %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

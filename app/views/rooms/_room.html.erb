@@ -1,0 +1,12 @@
+<div class="room">
+  <%= link_to room.name, room_path(room) %>
+  <div class="room__actions">
+    <%= button_to "Delete",
+                  room_path(room),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Edit",
+                edit_room_path(room),
+                class: "btn btn--light" %>
+  </div>
+</div>
