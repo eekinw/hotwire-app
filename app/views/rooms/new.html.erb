@@ -1,4 +1,5 @@
 <main class="container">
+  <%# sanitize is to prevent xss attacks, &larr is an arrow in html terms %>
   <%= link_to sanitize("&larr; Back to rooms"), rooms_path %>
 
   <div class="header">
