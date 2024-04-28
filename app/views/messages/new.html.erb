@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back"), @message.room %>
+
+  <div class="header">
+    <h1>New message</h1>
+  </div>
+
+  <%= render "form", message: @message %>
+</main>

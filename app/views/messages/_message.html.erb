@@ -1,0 +1,13 @@
+<div class="message">
+  <div>
+  <%= message.created_at.to_s{:short} %>: <%= message.content %>
+  </div>
+  <div class="room__actions">
+    <%= button_to "Delete",
+                  room_message_path(message.room, message),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "btn btn--light" %>
+  </div>
+
+</div>

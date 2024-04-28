@@ -1,0 +1,28 @@
+.room {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+
+  background-color: var(--color-light-grey);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  margin-bottom: var(--space-l);
+  padding: var(--space-s);
+
+  // border
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+
+  @include media(tabletAndUp) {
+    padding: var(--space-s) var(--space-l);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    gap: var(--space-s);
+  }
+}
