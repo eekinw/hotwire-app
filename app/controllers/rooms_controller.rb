@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
     before_action :set_room, only: [:show, :edit, :update, :destroy]
 
     def index
-        @rooms = Room.all
+        @rooms = Room.ordered
     end
 
     def show
@@ -16,7 +16,12 @@ class RoomsController < ApplicationController
        @room = Room.new(room_params)
 
        if @room.save
-           redirect_to @room, notice: "Room was successfully created."
+           respond_to do |format|
+            format.html { redirect_to rooms_path, notice: "Room was successfully created." }
+            format.turbo_stream do
+              render turbo_stream: turbo_stream.prepend("rooms", @room) + turbo_stream.update("new_room", "")
+            end
+        end
        else
            render :new
        end
@@ -27,15 +32,23 @@ class RoomsController < ApplicationController
 
     def update
         if @room.update(room_params)
-            redirect_to @room, notice: "Room was successfully updated."
+            respond_to do |format|
+                format.html { redirect_to rooms_path, notice: "Room was successfully updated." }
+            end
         else
-            render :edit
+            render :edit, status: :unprocessable_entity
         end
     end
 
     def destroy
         @room.destroy
-        redirect_to rooms_url, notice: "Room was successfully destroyed."
+
+        respond_to do |format|
+            format.html { redirect_to rooms_path, notice: "Room was successfully destroyed." }
+            format.turbo_stream do
+                render turbo_stream: turbo_stream.remove(@room)
+            end
+        end
     end
 
     private

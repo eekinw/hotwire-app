@@ -1,12 +1,14 @@
-<div class="room">
-  <%= link_to room.name, room_path(room) %>
-  <div class="room__actions">
-    <%= button_to "Delete",
+<%= turbo_frame_tag room do %>
+  <div class="room">
+    <%= link_to room.name, room_path(room), data: { turbo_frame: "_top" } %>
+      <div class="room__actions">
+          <%= button_to "Delete",
                   room_path(room),
                   method: :delete,
                   class: "btn btn--light" %>
-    <%= link_to "Edit",
+          <%= link_to "Edit",
                 edit_room_path(room),
                 class: "btn btn--light" %>
+      </div>
   </div>
-</div>
+<% end %>

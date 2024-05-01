@@ -10,4 +10,6 @@
 class Room < ApplicationRecord
     validates :name, presence: true
     has_many :messages, dependent: :destroy
+
+    scope :ordered, -> { order(created_at: :desc) }
 end
