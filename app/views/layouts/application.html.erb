@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <div id="flash_messages" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

@@ -18,9 +18,7 @@ class RoomsController < ApplicationController
        if @room.save
            respond_to do |format|
             format.html { redirect_to rooms_path, notice: "Room was successfully created." }
-            format.turbo_stream do
-              render turbo_stream: turbo_stream.prepend("rooms", @room) + turbo_stream.update("new_room", "")
-            end
+            format.turbo_stream { flash.now[:notice] = "Room was successfully created." }
         end
        else
            render :new
@@ -34,6 +32,8 @@ class RoomsController < ApplicationController
         if @room.update(room_params)
             respond_to do |format|
                 format.html { redirect_to rooms_path, notice: "Room was successfully updated." }
+                # :notice is the key, the string is the value
+                format.turbo_stream {flash.now[:notice] = "The room has been successfully updated" }
             end
         else
             render :edit, status: :unprocessable_entity
@@ -46,7 +46,8 @@ class RoomsController < ApplicationController
         respond_to do |format|
             format.html { redirect_to rooms_path, notice: "Room was successfully destroyed." }
             format.turbo_stream do
-                render turbo_stream: turbo_stream.remove(@room)
+                flash.now[:notice] = "The room has been successfully deleted"
+                render turbo_stream: turbo_stream.remove(@room) + turbo_stream.prepend("flash_messages", partial: "layouts/flash")
             end
         end
     end
