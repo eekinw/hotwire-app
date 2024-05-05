@@ -14,4 +14,6 @@
     <%= turbo_frame_tag "rooms" do %>
         <%= render @rooms %>
     <% end %>
+
+    <%= paginate @rooms %>
 </main>
