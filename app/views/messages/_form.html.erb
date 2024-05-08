@@ -7,7 +7,7 @@
 
     <%= f.input :content, input_html: { autofocus: true } %>
     <div>
-        <%= link_to "Cancel", rooms_path, class: "btn btn--light" %>
+        <%= link_to "Cancel", room_path(@room), class: "btn btn--light" %>
         <%= f.submit class: "btn btn--secondary" %>
     </div>
 <% end %>
