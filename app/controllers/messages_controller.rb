@@ -22,6 +22,11 @@ class MessagesController < ApplicationController
       @message = Message.find(params[:id])
       @room = @message.room
       @message.destroy
+
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "The message has been successfully deleted" }
+      end
+
       redirect_to @room, notice: "Message was successfully destroyed."
     end
 
