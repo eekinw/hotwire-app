@@ -24,10 +24,11 @@ class MessagesController < ApplicationController
       @message.destroy
 
       respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = "The message has been successfully deleted" }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.remove(@message) { flash.now[:notice] = "The message has been successfully deleted" }
+        end
+         format.html { redirect_to @room, notice: "Message was successfully destroyed." }
       end
-
-      redirect_to @room, notice: "Message was successfully destroyed."
     end
 
     private
