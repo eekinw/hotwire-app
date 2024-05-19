@@ -1,0 +1,10 @@
+<main class="container">
+  <h1>Chat Room</h1>
+  <p>Connect with no boundaries</p>
+
+  <% if user_signed_in? %>
+    <%= link_to "View Rooms", rooms_path, class: "btn btn--dark" %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
+  <% end %>
+</main>
