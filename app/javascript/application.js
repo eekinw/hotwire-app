@@ -1,6 +1,6 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "./controllers";
 
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.

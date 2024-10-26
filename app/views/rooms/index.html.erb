@@ -4,14 +4,20 @@
 <main class="container">
     <div class="header">
           <h1>Rooms</h1>
+
+          <%# Stimulus demo, comment out below first %>
+          <%# <div data-controller="confetti">
+            <button data-action="click->confetti#launchConfetti" class="btn btn--secondary">End Of Demo!</button>
+          </div> %>
+
           <%= link_to "New Room",
                 new_room_path,
                 data: { turbo_frame: "new_room"},
                 class: "btn btn--primary" %>
     </div>
 
-    <%= turbo_frame_tag "new_room" do %>
-    <% end %>
+    <%# comment this first %>
+    <%= turbo_frame_tag "new_room" do %><% end %>
 
     <%# show the partial _room.html.erb %>
     <%= turbo_frame_tag "rooms" do %>

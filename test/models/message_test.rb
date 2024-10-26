@@ -16,7 +16,7 @@
 #
 #  fk_rails_...  (room_id => rooms.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class MessageTest < ActiveSupport::TestCase
   # test "the truth" do

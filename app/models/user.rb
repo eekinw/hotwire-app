@@ -26,6 +26,6 @@ class User < ApplicationRecord
   has_many :rooms, through: :room_users
 
   def name
-    email.split("@").first.capitalize
+    email.split('@').first.capitalize
   end
 end

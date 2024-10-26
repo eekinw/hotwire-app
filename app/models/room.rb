@@ -8,24 +8,23 @@
 #  updated_at :datetime         not null
 #
 class Room < ApplicationRecord
-    validates :name, presence: true
-    has_many :messages, dependent: :destroy
-    has_many :room_users
-    has_many :users, through: :room_users
+  validates :name, presence: true
+  has_many :messages, dependent: :destroy
+  has_many :room_users
+  has_many :users, through: :room_users
 
-    scope :ordered, -> { order(created_at: :desc) }
+  scope :ordered, -> { order(created_at: :desc) }
 
-    # thee are 3 Active Record Callbacks that are used to broadcast changes to the room model
-
-    # after_create_commit -> { broadcast_prepend_later_to "rooms" }
-    # after_update_commit -> { broadcast_replace_later_to "rooms" }
-    # after_destroy_commit -> { broadcast_remove_to "rooms" }
-    # Both broadcasts and broadcasts_to automatically add broadcasts on create, update, and delete commits to the model
-    # 'later' denotes async processing using ActiveJob
-    broadcasts_to -> (_room) { "rooms" }, inserts_by: :prepend
-    # there are 4 types of inserts_by options we can choose when broadcasting: :prepend, :append, :before, :after
+  # thee are 3 Active Record Callbacks that are used to broadcast changes to the room model
+  # the 'later' suffix denotes async processing using ActiveJob, which is the recommended way to broadcast changes
+  # after_create_commit -> { broadcast_prepend_later_to "rooms" }
+  # after_update_commit -> { broadcast_replace_later_to "rooms" }
+  # after_destroy_commit -> { broadcast_remove_to "rooms" }
+  # Both broadcasts and broadcasts_to automatically add broadcasts on create, update, and delete commits to the model
+  # 'later' denotes async processing using ActiveJob
+  broadcasts_to ->(_room) { 'rooms' }, inserts_by: :prepend
+  # there are 4 types of inserts_by options we can choose when broadcasting: :prepend, :append, :before, :after
 end
-
 
 # more examples:
 

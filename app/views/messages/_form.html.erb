@@ -5,9 +5,9 @@
     </div>
   <% end %>
 
-    <%= f.input :content, input_html: { autofocus: true } %>
+    <%= f.input :content, label: "New Message", input_html: { autofocus: true } %>
     <div>
         <%= link_to "Cancel", room_path(@room), class: "btn btn--light" %>
-        <%= f.submit class: "btn btn--secondary" %>
+        <%= f.submit "Send Message", class: "btn btn--secondary" %>
     </div>
 <% end %>

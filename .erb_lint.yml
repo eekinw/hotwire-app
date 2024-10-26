@@ -1,0 +1,12 @@
+linters:
+  FinalNewline:
+    enabled: true
+  SpaceAroundErbTag:
+    enabled: true
+  Indentation:
+    enabled: true
+    indent_size: 2
+  ClosingErbTagIndentation:
+    enabled: true
+  ExtraNewline:
+    enabled: true

@@ -1,5 +1,6 @@
 <%= turbo_frame_tag room do %>
   <div class="room">
+  <%# change from _top to rooms for demo to show fail to find unique id %>
     <%= link_to room.name, room_path(room), data: { turbo_frame: "_top" } %>
       <div class="room__actions">
           <%= button_to "Delete",

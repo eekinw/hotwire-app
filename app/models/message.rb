@@ -17,14 +17,13 @@
 #  fk_rails_...  (room_id => rooms.id)
 #
 class Message < ApplicationRecord
-    belongs_to :room
-    validates :content, presence: true
+  belongs_to :room
+  validates :content, presence: true
 
-    # after create, update, destroy, broadcast changes to the room model
+  # after create, update, destroy, broadcast changes to the room model
 
-    # after_create_commit -> { broadcast_prepend_later_to :room }
-    # after_update_commit -> { broadcast_replace_later_to :room }
-    # after_destroy_commit -> { broadcast_remove_to :room }
-    broadcasts_to :room, inserts_by: :append
-
+  # after_create_commit -> { broadcast_prepend_later_to :room }
+  # after_update_commit -> { broadcast_replace_later_to :room }
+  # after_destroy_commit -> { broadcast_remove_to :room }
+  broadcasts_to :room, inserts_by: :append
 end

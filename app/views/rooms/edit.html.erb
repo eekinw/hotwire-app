@@ -5,7 +5,8 @@
     <h1>Edit Room</h1>
   </div>
 
-  <%= turbo_frame_tag @room do %>
+<%# or @room %>
+  <%= turbo_frame_tag "room_#{@room.id}" do %>
     <%= render "form", room: @room %>
   <% end %>
 </main>
