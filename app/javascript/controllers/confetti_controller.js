@@ -5,7 +5,7 @@ export default class extends Controller {
   // static targets = ["button"];
 
   connect() {
-    console.log("deez nuts");
+    console.log("Controller connected");
   }
 
   launchConfetti() {

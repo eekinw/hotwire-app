@@ -1,6 +1,8 @@
 <%= turbo_stream_from @room %>
 
-<main class="container">
+<%# add turbo_frame_tag @room for demo %>
+<%# <%= turbo_frame_tag @room do %>
+  <main class="container">
   <%= link_to sanitize("&larr; Back to rooms"), rooms_path %>
 
   <div class="header">
@@ -19,5 +21,5 @@
 
   <%= turbo_frame_tag "new_message" do %>
   <% end %>
-
 </main>
+<%# <% end %>
