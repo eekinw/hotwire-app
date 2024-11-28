@@ -2,10 +2,8 @@ import { Controller } from "@hotwired/stimulus";
 import confetti from "canvas-confetti";
 
 export default class extends Controller {
-  // static targets = ["button"];
-
   connect() {
-    console.log("Controller connected");
+    console.log("Confetti Controller connected");
   }
 
   launchConfetti() {
